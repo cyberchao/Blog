@@ -28,14 +28,14 @@ strong {
   font-weight: 700;
 }
 
-a,
+/* a,
 i,
 span {
   display: inline-block;
   text-decoration: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-}
+} */
 
 a:hover, a:focus,
 i:hover,
@@ -60,11 +60,6 @@ section {
   overflow-x: hidden;
 }
 
-button,
-input {
-  outline: none !important;
-  font-family: "Open Sans", sans-serif;
-}
 
 button {
   cursor: pointer;
@@ -301,9 +296,6 @@ i[class*="icon-"] {
   padding: 100px 0;
 }
 
-.btn {
-  border-radius: 0 !important;
-}
 
 .badge {
   font-weight: 300;
@@ -449,13 +441,13 @@ div[class*="-btn"] {
 *     NAVBAR
 * ==========================================================
 */
-.navbar {
+/* .navbar {
   background: #fff;
   padding-top: 20px !important;
   padding-bottom: 20px !important;
   z-index: 9998;
   border-bottom: 1px solid #ddd;
-}
+} */
 
 .navbar .langs a:first-of-type,
 .navbar .search-btn {
@@ -865,7 +857,6 @@ section.latest-posts header {
 }
 
 .post .date {
-  letter-spacing: 0.05em;
   font-weight: 700;
   text-transform: uppercase;
   color: darkslategray;
@@ -1305,7 +1296,6 @@ main.posts-listing .post-footer {
   margin: 5px 0;
   color: #777;
   font-size: 0.75em;
-  text-transform: uppercase;
   font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
@@ -1414,6 +1404,8 @@ main.posts-listing .post-footer {
 
 .blog-post .post-comments {
   margin-top: 50px;
+  background-color: lightblue;
+  padding: 10px;
 }
 
 .blog-post .post-comments span.no-of-comments {
@@ -1439,11 +1431,11 @@ main.posts-listing .post-footer {
   display: none;
 }
 
-.blog-post .post-comments img {
+/* .blog-post .post-comments img {
   max-width: 40px;
   min-width: 40px;
   height: 40px;
-}
+} */
 
 .blog-post .post-comments strong {
   display: block;
@@ -1451,7 +1443,7 @@ main.posts-listing .post-footer {
 }
 
 .blog-post .post-comments span.date {
-  font-size: 0.8em;
+  font-size: 0.3em;
   color: #999;
 }
 
@@ -1459,16 +1451,16 @@ main.posts-listing .post-footer {
   display: none;
 }
 
-.blog-post .post-comments .comment-body {
+/* .blog-post .post-comments .comment-body {
   margin-left: 55px;
   margin-top: 10px;
   margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
-}
+} */
 
 .blog-post .post-comments p {
-  font-size: 0.95em;
+  font-size: smaller;
   color: #555;
 }
 

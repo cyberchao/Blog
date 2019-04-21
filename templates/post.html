@@ -3,7 +3,7 @@
 {% load mptt_tags %}
 {% block content %}
 {% for message in messages %}
-    <p class="alert alert-primary" role='alert'>{{message}}</p>
+<p class="alert alert-primary" role='alert'>{{message}}</p>
 {% endfor %}
 <div class="container" id="post_container">
     <div class="row">
@@ -12,7 +12,6 @@
             <div class="container">
 
                 <div style="margin-left: 60px;margin-right: 60px;">
-                    <!-- <div class="post-thumbnail"><img src="{{ blog.thumbnail.url }}" alt="..." class="img-fluid"></div> -->
                     <div class="post-details">
                         <!-- <hr> -->
                         <div class="post-meta d-flex justify-content-between">
@@ -42,7 +41,7 @@
                             {% endfor %}
                         </div>
 
-                        <div id="share-buttons">
+                        <div id="share-buttons" style="padding-top: 25px;">
                             <a href="https://www.facebook.com/sharer.php?u=https://frinmash.blogspot.com" target="_blank">
                                 <img src="https://4.bp.blogspot.com/-raFYZvIFUV0/UwNI2ek6i3I/AAAAAAAAGSA/zs-kwq0q58E/s1600/facebook.png" alt="Facebook" />
                             </a>
@@ -50,8 +49,8 @@
                                 <img src="https://4.bp.blogspot.com/--ISQEurz3aE/UwNI4hDaQMI/AAAAAAAAGS4/ZAgmPiM9Xpk/s1600/twitter.png" alt="Twitter" />
                             </a>
                             <a href="http://service.weibo.com/share/share.php?appkey=&title={{ blog.title }}&url=https://pandacoder.top/blog/{{ blog.id }}" target="_blank">
-                               <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/微博.png" alt="Weibo" />
-                           </a>
+                                <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/微博.png" alt="Weibo" />
+                            </a>
                         </div>
 
                         <hr>
@@ -102,40 +101,40 @@
 
 
                     <div id="photoswipe" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-                    	<div class="pswp__bg"></div>
-                    	<div class="pswp__scroll-wrap">
-                    		<div class="pswp__container">
-                    			<div class="pswp__item"></div>
-                    			<div class="pswp__item"></div>
-                    			<div class="pswp__item"></div>
-                    		</div>
-                    		<div class="pswp__ui pswp__ui--hidden">
-                    			<div class="pswp__top-bar">
-                    				<div class="pswp__counter"></div>
-                    				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                    				<button class="pswp__button pswp__button--share" title="Share"></button>
-                    				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                    				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                    				<div class="pswp__preloader">
-                    					<div class="pswp__preloader__icn">
-                    						<div class="pswp__preloader__cut">
-                    							<div class="pswp__preloader__donut"></div>
-                    						</div>
-                    					</div>
-                    				</div>
-                    			</div>
-                    			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    				<div class="pswp__share-tooltip"></div>
-                    			</div>
-                    			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-                    			</button>
-                    			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-                    			</button>
-                    			<div class="pswp__caption">
-                    				<div class="pswp__caption__center"></div>
-                    			</div>
-                    		</div>
-                    	</div>
+                        <div class="pswp__bg"></div>
+                        <div class="pswp__scroll-wrap">
+                            <div class="pswp__container">
+                                <div class="pswp__item"></div>
+                                <div class="pswp__item"></div>
+                                <div class="pswp__item"></div>
+                            </div>
+                            <div class="pswp__ui pswp__ui--hidden">
+                                <div class="pswp__top-bar">
+                                    <div class="pswp__counter"></div>
+                                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                                    <div class="pswp__preloader">
+                                        <div class="pswp__preloader__icn">
+                                            <div class="pswp__preloader__cut">
+                                                <div class="pswp__preloader__donut"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                    <div class="pswp__share-tooltip"></div>
+                                </div>
+                                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                                </button>
+                                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                                </button>
+                                <div class="pswp__caption">
+                                    <div class="pswp__caption__center"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -143,28 +142,28 @@
             <div class="">
                 <div class="post-comments">
                     <div class="row justify-content-center">
-                          <div class="col-10">
-                              <h3 class="h6">留言<span class="no-of-comments">({{ blog.comments.count }})</span></h3>
-                              <div>
-                                  <form method="POST" class="commenting-form">
-                                      {% csrf_token %}
-                                      <div class="form-group  col-md-12">
-                                          <textarea rows='3'  name="comment" class="form-control"></textarea>
-                                      </div>
-                                      {% if user.is_authenticated %}
-                                      <div class="form-group col-md-12">
-                                          <button type="submit" class="btn btn-secondary">评论</button>
-                                      </div>
-                                      {% else %}
-                                      <div>
-                                          评论前请先登录
-                                      </div>
-                                      {% endif %}
+                        <div class="col-10">
+                            <h3 class="h6">留言<span class="no-of-comments">({{ blog.comments.count }})</span></h3>
+                            <div>
+                                <form method="POST" class="commenting-form">
+                                    {% csrf_token %}
+                                    <div class="form-group  col-md-12">
+                                        <textarea rows='3' name="comment" class="form-control"></textarea>
+                                    </div>
+                                    {% if user.is_authenticated %}
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-secondary">评论</button>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        评论前请先登录
+                                    </div>
+                                    {% endif %}
 
-                                  </form>
-                          </div>
+                                </form>
+                            </div>
 
-                      </div>
+                        </div>
                     </div>
 
 
@@ -172,24 +171,24 @@
                     <div class="comment">
                         <div class="row comment_row">
                             <div class="col-2">
-                                <div class="image"><img src="{{ blog.author.profile_picture.url }}" alt="..." ></div>
+                                <div class="image"><img src="{{ blog.author.profile_picture.url }}" alt="..."></div>
 
                             </div>
                             <div class="col-9">
                                 <div class="title"><span>{{ node.name }}</span>
                                     <span class="badge badge-pill badge-dark">author</span>
                                     <span class="date">
-                                    {{ node.timestamp }}</span>
+                                        {{ node.timestamp }}</span>
                                     <span style="cursor:pointer;float:right;" onclick="showTextarea({{node.id}})" class="comment_p">回复</span>
                                 </div>
                                 <div class="comment-body">
                                     <p>{{ node.body }}</p>
-                                    <div style="display:none;"  id="textarea{{node.id}}" class="textareas">
+                                    <div style="display:none;" id="textarea{{node.id}}" class="textareas">
                                         <form method="POST" class="commenting-form">
                                             <input type="text" name="parent" value={{node.id}} hidden />
                                             <div class="form-group">
-                                               <textarea class="form-control"  rows="2" name="comment"></textarea>
-                                             </div>
+                                                <textarea class="form-control" rows="2" name="comment"></textarea>
+                                            </div>
                                             <button type="submit" class="btn btn-outline-dark btn-sm">发送</button>
                                         </form>
                                     </div>
@@ -200,9 +199,9 @@
                         </div>
 
                         {% if not node.is_leaf_node %}
-                            <ul class="children" style="padding-left: 80px;">
-                                {{ children }}
-                            </ul>
+                        <ul class="children" style="padding-left: 80px;">
+                            {{ children }}
+                        </ul>
                         {% endif %}
                     </div>
                     {% endrecursetree %}
@@ -214,19 +213,18 @@
 </div>
 <!-- Page Footer-->
 <script type="text/javascript">
-	//评论的回复框
-    function showTextarea(str){
-        if($("#textarea"+str).is(":visible")){
-            $("#textarea"+str).attr("style","display:none;");
-        }else{
-            $(".textareas").each(function(){
+    //评论的回复框
+    function showTextarea(str) {
+        if ($("#textarea" + str).is(":visible")) {
+            $("#textarea" + str).attr("style", "display:none;");
+        } else {
+            $(".textareas").each(function() {
                 $(this).hide();
             })
-             $("#textarea"+str).show();
+            $("#textarea" + str).show();
         }
 
     }
-
 </script>
 
 

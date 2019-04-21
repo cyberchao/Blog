@@ -141,8 +141,6 @@ def get_category_count():
     query = Posts.objects.values('category__id', 'category__title').annotate(Count('category__title'))
     # print(Posts.objects.values('categories__title').annotate(Count('categories__title')))
     queryset = Category.objects.annotate(Count('posts'))
-    print(query)
-    print(type(queryset))
     return queryset
 
 

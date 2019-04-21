@@ -1,0 +1,244 @@
+@charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+.music-box {
+    position: fixed;
+    top: 94%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    width: 46%;
+    height: initial;
+    background-color: ghostwhite;
+    box-shadow: 0 0 15px #535353;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.music-box .album {
+    position: relative;
+}
+
+.music-box .album .photo {
+    background: url("https://zero-space.s3.amazonaws.com/photos/cd69aadc-9775-49fc-8c1a-b80c1c380d4ax840.jpg") no-repeat 100% 100%;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+}
+
+.music-box .album .infos {
+    background-color: rgba(70, 50, 57, 0.3);
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+}
+
+.music-box .album .infos .song {
+    padding: 10px;
+    color: #c6ad94;
+    letter-spacing: 0.5px;
+}
+
+.music-box .album .infos .song span,
+.music-box .album .infos .song small {
+    display: block;
+}
+
+.music-box .dashboard {
+    margin-top: 15px;
+}
+
+
+.music-box .dashboard .player .time {
+    color: #c6ad94;
+}
+
+.music-box .dashboard .player .time-rail {
+    height: 1px;
+    position: relative;
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+.music-box .dashboard .player .time-rail .thumb,
+.music-box .dashboard .player .time-rail .track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.music-box .dashboard .player .time-rail .thumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffba49;
+    z-index: 1;
+    left: 30%;
+    transition: 0.3s;
+}
+
+.music-box .dashboard .player .time-rail .thumb:hover {
+    transform: translateY(-50%) scale(1.2);
+}
+
+.music-box .dashboard .player .time-rail .thumb::before {
+    content: "";
+    width: 500px;
+    height: 1px;
+    background-color: #ffba49;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.music-box .dashboard .player .time-rail .track {
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #c6ad94;
+}
+
+.music-box .dashboard .player .time-rail input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    overflow: hidden;
+    background: none;
+}
+
+.music-box .dashboard .player .time-rail input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffba49;
+}
+
+#controls {
+    text-align: center;
+}
+
+#controls a {
+    cursor: pointer;
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    margin: 3px;
+    line-height: 44px;
+    color: #c6ad94;
+    transition-duration: 0.3s;
+}
+
+#controls a:hover {
+    color: #ffba49;
+}
+
+#controls a:hover.play-pause {
+    border-color: #ffba49;
+}
+
+#controls a.play-pause {
+    border-radius: 50%;
+    border: 1px solid #c6ad94;
+    font-size: 1.5em;
+    width: 54px;
+    height: 54px;
+    line-height: 54px;
+}
+
+#controls a.play-pause.active {
+    border-color: #ffba49;
+}
+
+#controls a.play-pause.active i::before {
+    content: "";
+    margin-left: 5px;
+}
+
+#controls a.active {
+    color: #ffba49;
+}
+
+.music-box .lists {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #463239;
+    transform: translateX(-100%);
+    transition: 0.3s 0s;
+}
+
+.music-box .lists.active {
+    transform: translateX(0);
+    transition: 0.3s 0.9s;
+}
+
+.music-box .lists .label {
+    font-size: 2em;
+    padding: 8px 15px;
+    height: 60px;
+    box-sizing: border-box;
+    color: #ffba49;
+}
+
+.music-box .lists ul {
+    padding-left: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+    height: calc(100% - 60px);
+    position: absolute;
+    overflow-y: auto;
+    background-color: #c6ad94;
+}
+
+.music-box .lists ul::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.music-box .lists ul::-webkit-scrollbar-track {
+    background-color: #463239;
+}
+
+.music-box .lists ul::-webkit-scrollbar-thumb {
+    background-color: #ffba49;
+    border-radius: 3px;
+}
+
+.music-box .lists ul li {
+    cursor: pointer;
+    padding: 5px 15px;
+    transition-duration: 0.3s;
+}
+
+.music-box .lists ul li span,
+.music-box .lists ul li em {
+    display: inline-block;
+}
+
+.music-box .lists ul li span small {
+    display: block;
+}
+
+.music-box .lists ul li em {
+    float: right;
+    top: 0;
+    font-style: normal;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.music-box .lists ul li:nth-of-type(odd) {
+    background-color: rgba(70, 50, 57, 0.1);
+}
+
+.music-box .lists ul li:hover {
+    background-color: rgba(70, 50, 57, 0.3);
+}

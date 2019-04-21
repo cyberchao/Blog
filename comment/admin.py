@@ -3,5 +3,7 @@ from .models import Genre
 
 
 class GenreAdmin(admin.ModelAdmin):
-    list_display=('blog', 'name', 'body','timestamp')
-admin.site.register(Genre,GenreAdmin)
+    list_display = ('blog', 'name', 'body', 'timestamp')
+
+
+admin.site.register(Genre, GenreAdmin)

@@ -16,7 +16,8 @@ SECRET_KEY = '+1tqpr8%kbv5%a!i897qikk*(_tikhh2cms(ygca151qdh0r++'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.pandacoder.top','47.106.230.2','pandacoder.top','127.0.0.1',]
+ALLOWED_HOSTS = ['www.pandacoder.top',
+                 '47.106.230.2', 'pandacoder.top', '127.0.0.1', ]
 
 
 # Application definition
@@ -76,14 +77,13 @@ WSGI_APPLICATION = 'Blogsrc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
+        'NAME': 'Blogv1',
         'USER': 'root',
-        'PASSWORD':'Pangru123',
-        'HOST':'47.106.230.2',
-        'PORT':'3306'
+        'PASSWORD': 'Pangru123',
+        'HOST': '47.106.230.2',
+        'PORT': '3306'
     }
 }
-
 
 
 # Password validation
@@ -122,13 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 # BASE_DIR 是项目根目录
-# VENV_PATH 是虚拟环境根目录
+# VENV_PATH 是虚拟环境根目录,上传的媒体文件放到项目目录外面，方便使用git
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 # tinymce
 TINYMCE_DEFAULT_CONFIG = {
@@ -157,12 +157,12 @@ TINYMCE_DEFAULT_CONFIG = {
     'contextmenu': 'formats | link image',
     'menubar': True,
     'statusbar': True,
-    }
+}
 
 
 EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.163.com'  # 如果是 163 改成 smtp.163.com
 EMAIL_PORT = 465
-EMAIL_HOST_USER = 'pr951029@163.com' # 帐号
+EMAIL_HOST_USER = 'pr951029@163.com'  # 帐号
 EMAIL_HOST_PASSWORD = 'pr951029'  # 密码
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

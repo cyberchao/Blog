@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700");
+
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+section.content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+section.content .music-head {
+    flex: 0 0 auto;
+    display: flex;
+    padding: 40px;
+    background-color: #4e4e4e;
+}
+
+section.content .music-head .catty-music {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    color: #fff;
+    padding-left: 50px;
+}
+
+.catty-music div:nth-child(1) {
+    margin-bottom: auto;
+}
+
+.catty-music div:nth-child(2) {
+    margin-top: 0;
+}
+
+.catty-music div:nth-child(2) i.fa {
+    font-size: 0.9em;
+    padding: 0 0.7em;
+    font-weight: 300;
+}
+
+.catty-music div:nth-child(1) p:first-child {
+    font-size: 1.8em;
+    margin: 0 0 10px;
+}
+
+.catty-music div:nth-child(1) p:not(:first-child) {
+    font-size: 0.9em;
+    margin: 2px 0;
+}
+
+section.content .music-list {
+    flex: 1 0 auto;
+    list-style-type: none;
+    padding: 5px 10px 0px;
+    cursor: pointer;
+}
+
+li {
+    display: flex;
+    padding: 0 20px;
+    min-height: 50px;
+    border-top: solid 0.6px rgba(0, 0, 0, 0.2);
+}
+
+li:nth-child(1) {
+    border-top: solid 1px rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+li:nth-child(2) {
+    color: rgba(255, 127, 20, 0.6);
+    font-weight: 700;
+}
+
+li:hover {
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    border: solid .6px transparent;
+}
+
+li:hover+li {
+    border: solid .6px transparent;
+}
+
+li p {
+    flex: 0 0 25%;
+}
+
+li+li span.catty-cloud {
+    border: 1px solid black;
+    font-size: 0.8em;
+    padding: 3px;
+}
+
+li+li span.catty-cloud:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+footer {
+    display: flex;
+    flex: 0 0 90px;
+    padding: 10px;
+    color: #fff;
+    background-color: rgba(61, 100, 158, 0.9);
+}
+
+.catty-music-small {
+    display: flex;
+    margin-right: auto;
+}
+
+.catty-music-small img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    padding-right: 10px;
+    width: 100px;
+}
+
+.catty-music-controls {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.catty-music-controls i.fa {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    /*vertical center pseduElements -
+use this bcause display:flex in mobile either show*/
+}
+
+.catty-music-controls i.fa::before {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.catty-music-controls i.fa:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/*
+========================================================
+Mobile responsiveness
+=========================================================
+*/
+@media screen and (max-width: 64em) {
+    .sm-hide {
+        display: none;
+    }
+
+    .sm-text-center {
+        font-size: 1.1em;
+        text-align: center;
+    }
+
+    .sm-text-right {
+        text-align: right;
+    }
+
+    section.content .music-head {
+        flex: 0 0 auto;
+        /*auto compute height*/
+        display: flex;
+        flex-direction: column;
+        /*stack image and music details vertically*/
+        align-items: center;
+        /*center items. left-to-right*/
+        padding: 40px 0;
+        background-color: #4e4e4e;
+    }
+
+    section.content .music-head .catty-music {
+        padding: 0;
+        /*remove the spacing.*/
+    }
+
+    /*album art*/
+    .music-head img {
+        width: 150px;
+    }
+
+    /*album details*/
+    .catty-music div:nth-child(1) p:first-child {
+        margin: 20px 0;
+        font-size: 1.2em;
+    }
+
+    /*song lists*/
+    li p {
+        flex: 0 0 50%;
+    }
+
+    /*music control*/
+    .catty-music-controls {
+        justify-content: space-around;
+    }
+
+    .active {
+        color: rgba(255, 127, 20, 0.6);
+        font-weight: bold;
+    }
+}
