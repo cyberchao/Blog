@@ -88,68 +88,11 @@
                             </a>
                             {% endif %}
                         </div>
-                        <h3 class="h6">留言<span class="no-of-comments">({{ blog.comments.count }})</span></h3>
-                        <div class="add-comment">
-                            <form method="POST" class="commenting-form">
-                                {% csrf_token %}
-                                <div class="row ">
-                                    <textarea rows='1' placeholder='Auto-Expanding Textarea' name="comment"></textarea>
-                                    {% if user.is_authenticated %}
-                                    <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-secondary">评论</button>
-                                    </div>
-                                    {% else %}
-                                    <div>
-                                        评论前请先登录
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </form>
-                        </div>
 
 
 
-                        <div class="post-comments">
-                            {% recursetree genres %}
-                            <div class="comment">
-                                <div class="comment-header d-flex justify-content-between">
-                                    <div class="user d-flex align-items-center">
-                                        <div class="image"><img src="{{ blog.author.profile_picture.url }}" alt="..." class="img-fluid rounded-circle"></div>
-                                        <div class="title"><span>{{ node.name }}</span>
-                                            <span><img src="{% static 'img/reply.svg' %}" alt=""></span>
-                                            <span style="font-weight: 100;font-size: smaller;">
-                                            {% if node.parent.name %}
-                                                {{ node.parent.name }}
-                                            {% endif %}</span>
-                                            <span class="date">
 
-                                            {{ node.timestamp }}</span>
-                                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="comment-body">
-                                    <p>{{ node.body }}</p>
-                                    <p style="cursor:pointer" onclick="showTextarea({{node.id}})" class="comment_p">回复</p>
-                                    <div style="display:none;"  id="textarea{{node.id}}" class="textareas">
-                                        <form method="POST" class="commenting-form">
-                                            <input type="text" name="parent" value={{node.id}} hidden />
-                                            <div class="form-group">
-                                               <textarea class="form-control"  rows="2" name="comment"></textarea>
-                                             </div>
-                                            <button type="submit" class="btn btn-secondary btn-sm">发送</button>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                {% if not node.is_leaf_node %}
-                                    <ul class="children" style="padding-left: 80px;">
-                                        {{ children }}
-                                    </ul>
-                                {% endif %}
-                            </div>
-                            {% endrecursetree %}
-                        </div>
 
 
                     </div>
@@ -195,6 +138,74 @@
                     	</div>
                     </div>
 
+                </div>
+            </div>
+            <div class="">
+                <div class="post-comments">
+                    <div class="row justify-content-center">
+                          <div class="col-10">
+                              <h3 class="h6">留言<span class="no-of-comments">({{ blog.comments.count }})</span></h3>
+                              <div>
+                                  <form method="POST" class="commenting-form">
+                                      {% csrf_token %}
+                                      <div class="form-group  col-md-12">
+                                          <textarea rows='3'  name="comment" class="form-control"></textarea>
+                                      </div>
+                                      {% if user.is_authenticated %}
+                                      <div class="form-group col-md-12">
+                                          <button type="submit" class="btn btn-secondary">评论</button>
+                                      </div>
+                                      {% else %}
+                                      <div>
+                                          评论前请先登录
+                                      </div>
+                                      {% endif %}
+
+                                  </form>
+                          </div>
+
+                      </div>
+                    </div>
+
+
+                    {% recursetree genres %}
+                    <div class="comment">
+                        <div class="row comment_row">
+                            <div class="col-2">
+                                <div class="image"><img src="{{ blog.author.profile_picture.url }}" alt="..." ></div>
+
+                            </div>
+                            <div class="col-9">
+                                <div class="title"><span>{{ node.name }}</span>
+                                    <span class="badge badge-pill badge-dark">author</span>
+                                    <span class="date">
+                                    {{ node.timestamp }}</span>
+                                    <span style="cursor:pointer;float:right;" onclick="showTextarea({{node.id}})" class="comment_p">回复</span>
+                                </div>
+                                <div class="comment-body">
+                                    <p>{{ node.body }}</p>
+                                    <div style="display:none;"  id="textarea{{node.id}}" class="textareas">
+                                        <form method="POST" class="commenting-form">
+                                            <input type="text" name="parent" value={{node.id}} hidden />
+                                            <div class="form-group">
+                                               <textarea class="form-control"  rows="2" name="comment"></textarea>
+                                             </div>
+                                            <button type="submit" class="btn btn-outline-dark btn-sm">发送</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {% if not node.is_leaf_node %}
+                            <ul class="children" style="padding-left: 80px;">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    {% endrecursetree %}
                 </div>
             </div>
         </main>

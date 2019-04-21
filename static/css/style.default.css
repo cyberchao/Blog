@@ -1404,6 +1404,8 @@ main.posts-listing .post-footer {
 
 .blog-post .post-comments {
   margin-top: 50px;
+  background-color: #DEE1E3;
+  padding: 10px;
 }
 
 .blog-post .post-comments span.no-of-comments {
@@ -1429,11 +1431,11 @@ main.posts-listing .post-footer {
   display: none;
 }
 
-.blog-post .post-comments img {
+/* .blog-post .post-comments img {
   max-width: 40px;
   min-width: 40px;
   height: 40px;
-}
+} */
 
 .blog-post .post-comments strong {
   display: block;
@@ -1449,13 +1451,13 @@ main.posts-listing .post-footer {
   display: none;
 }
 
-.blog-post .post-comments .comment-body {
+/* .blog-post .post-comments .comment-body {
   margin-left: 55px;
   margin-top: 10px;
   margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
-}
+} */
 
 .blog-post .post-comments p {
   font-size: smaller;

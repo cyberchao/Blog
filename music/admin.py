@@ -3,7 +3,7 @@ from .models import Album, Song
 
 
 class AlbumAdmin(admin.ModelAdmin):
-    list_display = ('user', 'album_title', 'artist', 'genre', 'is_favorite')
+    list_display = ('user', 'album_title','genre', 'is_favorite')
 
 
 admin.site.register(Album, AlbumAdmin)

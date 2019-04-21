@@ -4,6 +4,7 @@ from django.db.models import Q
 from .forms import AlbumForm, SongForm, UserForm
 from .models import Album, Song
 import json
+from mutagen.mp3 import MP3
 
 AUDIO_FILE_TYPES = ['wav', 'mp3', 'ogg']
 IMAGE_FILE_TYPES = ['png', 'jpg', 'jpeg']
@@ -20,7 +21,6 @@ def index(request):
         if query:
             albums = albums.filter(
                 Q(album_title__icontains=query)
-                | Q(artist__icontains=query)
             ).distinct()
             song_results = song_results.filter(
                 Q(song_title__icontains=query)
@@ -86,7 +86,8 @@ def create_song(request, album_id):
                 'error_message': 'Audio file must be WAV, MP3, or OGG',
             }
             return render(request, 'music/create_song.html', context)
-
+        mp3 = MP3(song.audio_file)
+        song.length = round(mp3.info.length)
         song.save()
         return render(request, 'music/detail.html', {'album': album})
     context = {
@@ -111,10 +112,10 @@ def delete_song(request, album_id, song_id):
     song.delete()
     return render(request, 'music/detail.html', {'album': album})
 
+
 """
 {
     title: 'Lost On You',
-    artist: 'LP',
     duration: 268,
     album: {
         title: 'Lost On You',
@@ -124,6 +125,8 @@ def delete_song(request, album_id, song_id):
     url: `${archiveBase}/LostOnYou_201610/Lost On You.mp3`
 }
 """
+
+
 def detail(request, album_id):
     print(1222)
     playlist = []
@@ -132,26 +135,25 @@ def detail(request, album_id):
     else:
         user = request.user
         album = get_object_or_404(Album, pk=album_id)
-        songs = Song.objects.filter(album = album)
+        songs = Song.objects.filter(album=album)
         for song in songs:
-            song = {'title':song.song_title,
-            "artist":'匿名',
-            'duration':'241',
-            "album":{
-                'title':'testalbum',
-                'art': {
-                    'square':album.album_logo.url,
-                }},
-            'url':song.audio_file.url
-            }
+            song = {'title': song.song_title,
+                    'duration': song.length,
+                    "album": {
+                        'title': song.album.album_title,
+                        'art': {
+                            'square': album.album_logo.url,
+                        }},
+                    'url': song.audio_file.url
+                    }
             playlist.append(song)
         print(playlist)
-        jsonlist = json.dumps(playlist,ensure_ascii=False)
+        jsonlist = json.dumps(playlist, ensure_ascii=False)
         print(jsonlist)
-        return render(request,'music/detail.html',{
+        return render(request, 'music/detail.html', {
             'album': album,
-            'playlist':jsonlist,
-            })
+            'playlist': jsonlist,
+        })
         # return render(request, 'music/detail.html', {'album': album, 'user': user})
 
 

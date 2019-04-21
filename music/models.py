@@ -4,14 +4,13 @@ from django.db import models
 
 class Album(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    artist = models.CharField(max_length=250)
     album_title = models.CharField(max_length=500)
     genre = models.CharField(max_length=100)
     album_logo = models.FileField(upload_to='album_logo')
     is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.album_title + ' - ' + self.artist
+        return self.album_title
 
     class Meta:
         verbose_name = '专辑'
@@ -23,7 +22,7 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     song_title = models.CharField(max_length=250)
     audio_file = models.FileField(upload_to='music')
-    is_favorite = models.BooleanField(default=False)
+    length = models.IntegerField()
 
     def __str__(self):
         return self.song_title

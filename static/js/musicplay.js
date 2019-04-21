@@ -387,17 +387,17 @@ function buildPlaylist() {
             `
             <tr data-index="${index}">
               <td>${song.title}</td>
-              <td>${song.artist}</td>
               <td>${song.album.title}</td>
               <td>${secondsToHms(song.duration)}</td>
             </tr>
+
             `;
 
     });
     playlistBody.innerHTML = html;
 
     // Update the list items
-    listItems = document.querySelectorAll('#playlist tbody tr');
+    listItems = document.querySelectorAll('#playlist tbody tr form button');
 
     // Add event listeners to the list items
     for (const listItem of listItems) {

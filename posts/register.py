@@ -115,7 +115,6 @@ def handle_uploaded_file(f):
 def change_profile(request):
     if request.method == 'POST':
         profile_picture = request.FILES['avatar']
-        print(type(profile_picture))
         user = User.objects.get(username=str(request.user))
         user.profile_picture = profile_picture
         website = request.POST.get('website')

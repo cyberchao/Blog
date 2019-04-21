@@ -1,3 +1,64 @@
+
+/* 修改 */
+.headercard input{
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* 评论样式 */
+.post-comments .comment .image img{
+    display: inline-block;
+    float: right;
+    width: 50px;
+    height:50px;
+    border:3px solid white;
+    border-radius: 5px;
+
+}
+.post-comments .comment .col-9{
+    background-color: white;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    border-radius: 5px;
+}
+.post-comments .comment .col-9::after{
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border-width: 10px 12px 10px 0;
+    border-style: solid;
+    border-color: transparent #FCFCFC;
+    top: 8px;
+    left: -11px;
+}
+.comment .comment_row{
+    margin-bottom: 10px !important;
+}
+.post-comments .comment .title{
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #E5E5E5;
+
+}
+.post-comments .comment .comment-body>p{
+    padding: 12px;
+    font-size: 15px;
+
+}
+.textareas{
+    margin-bottom: 5px;
+}
+.textareas .form-group{
+margin-bottom: .3rem;
+}
+.textareas .btn-sm{
+padding: 0 0.5rem;
+}
 /* list样式 */
 .conteudo .foot_p{
     font-size: .875em;
@@ -84,7 +145,7 @@ color: #656C7A;
 /* 背景图片 */
 body>div {
     /* background: url("../img/denys-nevozhai-1335535-unsplash.jpg"); */
-    background-color: lightblue;
+    background-color: #242424;
     position: relative;
 }
 
@@ -369,8 +430,6 @@ body{
 }
 
 .panel{
-    margin-bottom: 50px;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
     padding: 10px 23px 10px 10px;
     background-color: #fff;
     width: 100%;
@@ -438,10 +497,10 @@ body{
 
 .mytags .tag-rounded{
      /* border: 1px solid #dee2e5; */
-     background-color: #dee2e5;
+     background-color: lightslategrey;
      border-radius: 25px;
      padding: 3px 8px;
-     color: #a9b1b5;
+     color: ghostwhite;
      transition: all 300ms ease-in-out;
 }
 
