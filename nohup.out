@@ -1,0 +1,37 @@
+*** Starting uWSGI 2.0.18 (64bit) on [Thu Mar 14 23:14:08 2019] ***
+compiled with version: 5.4.0 20160609 on 13 March 2019 07:54:05
+os: Linux-4.4.0-139-generic #165-Ubuntu SMP Wed Oct 24 10:58:50 UTC 2018
+nodename: Pandapang
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /opt/uwsgitest/NewBlog
+detected binary path: /opt/uwsgitest/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 7853
+your memory page size is 4096 bytes
+detected max file descriptor number: 65535
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address blog.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.5 (default, Nov 22 2018, 13:16:30)  [GCC 5.4.0 20160609]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xdf9fc0
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 72920 bytes (71 KB) for 1 cores
+*** Operational MODE: single process ***
+/opt/uwsgitest/NewBlog
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xdf9fc0 pid: 3844 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 3844, cores: 1)
+Gracefully killing worker 1 (pid: 3844)...

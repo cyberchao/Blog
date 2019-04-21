@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="padding-top: 60px;">
+    <div class="login-wrap">
+      <h2>登录</h2>
+        <form novalidate action="/login" method="post">
+            <div class="form">
+            <input type="text" placeholder="用户名" name="username" />
+                <div><small>{{ form.username.errors.0 }}</small></div>
+            <input type="password" placeholder="密码" name="password" />
+                <div><small>{{ form.password.errors.0 }}</small></div>
+            <button type="submit" id="button">登录</button>
+                <a href="{% url 'signup' %}"> <p> 没有账号，现在注册 </p></a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

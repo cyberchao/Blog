@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for message in messages %}
+        <p class="alert alert-primary" role='alert'>{{message}}</p>
+    {% endfor %}
+<p style="padding-top: 200px">home页面</p>
+{% endblock %}

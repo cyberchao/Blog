@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    {% include 'head.html' %}
+
+    <body>
+        <div style="height: 100%;">
+
+            <div class="container" id="blog_container">
+
+            {% include 'header.html' %}
+            {% for message in messages %}
+                <p class="alert alert-primary myalert" role='alert'>{{message}}</p>
+            {% endfor %}
+
+                    {% block content %}
+                    {% endblock %}
+                {% include 'footer.html' %}
+                {% include 'scripts.html' %}
+            </div>
+        </div>
+    </body>
+</html>

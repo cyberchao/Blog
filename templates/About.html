@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="container" id="post_container">
+    <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-10">
+            <div class="container">
+                <p>本站基于Django2.1，Python3.6.5，源码：<span style="color: #33cccc;"><strong><a style="color: #33cccc;" href="https://github.com/pangruru/NewBlog" target="_blank" rel="noopener">Github</a>&nbsp;</strong></span>欢迎Issue和Fork</p>
+                <p>特别感谢<span style="color: #33cccc;"><strong><a style="color: #33cccc;" href="https://bootstrapious.com/" target="_blank" rel="noopener">https://bootstrapious.com/</a></strong></span>提供的免费模板，可以让我免于样式设计的烦恼，也非常感谢youtube博主<strong><a href="https://www.youtube.com/channel/UCRM1gWNTDx0SHIqUJygD-kQ" target="_blank" rel="noopener"><span style="color: #33cccc;">JustDjango</span></a></strong>的教学，真的非常棒，还有一个大神博主鼎力推荐：<strong><span style="color: #33cccc;"><a style="color: #33cccc;" href="https://www.youtube.com/channel/UCCezIgC97PvUuR4_gbFUs5g" target="_blank" rel="noopener"> Corey Schafer</a></span></strong></p>
+                <p>本人是印象笔记的重度用户，因为还在学习阶段，感觉自己现在还不能分享多少有价值的文章，所以之前基本没写过博客，希望此站上线后可以让我养成规范化知识的习惯，还希望通过此站记录自己和老婆生活的点点滴滴。</p>
+                <p>&nbsp;</p>
+                <p>开始设计时，我打算把这个网站弄成一个可以注册登录的公共博客网站，后来觉得没有必要又删掉了很多代码，但是依然可以在后台添加其他用户，仅仅为了区分文章作者</p>
+                <p>本站目前功能还不完善，有时间会逐一完善，比如：</p>
+                <ul>
+                <li>回复评论，并可以选择在收到回复时邮件提醒</li>
+                <li>评论的Ajax实现</li>
+                <li>文章的本地图片上传(扩展<a href="https://www.tiny.cloud/docs/" target="_blank" rel="noopener"><span style="color: #33cccc;">TinyMCE</span></a>)</li>
+                <li>全文搜索(<span style="color: #33cccc; font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro'; font-size: 17px;"><a style="color: #33cccc;" href="https://django-crispy-forms.readthedocs.io/en/latest/" target="_blank" rel="noopener"><strong>django-crispy-form</strong>s</a></span>)</li>
+                <li>加入Redis</li>
+                </ul>
+                <p>&nbsp; &nbsp; 本站搭建于阿里云ECS,基于ubuntu16.04,Docker,Nginx,uWSGI</p>
+                <p>&nbsp;</p>
+                <p>--本人17年毕业，目前定位 上海，自学Py一年多点~，下图是个人微信，欢迎交流</p>
+                <p><img style="display: block; margin-left: auto; margin-right: auto;" src="{% static 'img/1552447103(1).png' %}" alt="" width="217" height="217" /></p>
+                <p>&nbsp;</p>
+            </div>
+        </main>
+    </div>
+</div>
+<!-- Page Footer-->
+{% endblock %}

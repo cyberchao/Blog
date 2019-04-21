@@ -1,0 +1,223 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load mptt_tags %}
+{% block content %}
+{% for message in messages %}
+    <p class="alert alert-primary" role='alert'>{{message}}</p>
+{% endfor %}
+<div class="container" id="post_container">
+    <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-12">
+            <div class="container">
+
+                <div style="margin-left: 60px;margin-right: 60px;">
+                    <!-- <div class="post-thumbnail"><img src="{{ blog.thumbnail.url }}" alt="..." class="img-fluid"></div> -->
+                    <div class="post-details">
+                        <!-- <hr> -->
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="category">
+                                <a href="{% url 'get_category_blogs' id=blog.category_id %}">{{ blog.category }}</a>
+                            </div>
+                        </div>
+
+                        <h3 style="text-align: center;">{{ blog.title }}</h3>
+                        <div class="post-footer d-flex align-items-center flex-column"><a href="#" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar"><img src="{{ blog.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                                <div class="title"><span>{{ blog.author }}</span></div>
+                            </a>
+                            <div class="d-flex align-items-center flex-wrap" style="padding-top:20px">
+                                <div class="date"><i class="icon-clock"></i> {{ blog.timestamp|timesince }} ago</div>
+                                <div class="views"><i class="icon-eye"></i> {{ blog.view_count }}</div>
+                                <div class="comments meta-last"><i class="icon-comment"></i>{{ blog.comments.count }}</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="post-body">
+                            {{ blog.content|safe }}
+                        </div>
+                        <div class="post-tags">
+                            {% for tag in blog.tags.all %}
+                            <a href="{% url 'get_tag_blogs' id=tag.id %}" class="tag">#{{ tag.title }}</a>
+                            {% endfor %}
+                        </div>
+
+                        <div id="share-buttons">
+                            <a href="https://www.facebook.com/sharer.php?u=https://frinmash.blogspot.com" target="_blank">
+                                <img src="https://4.bp.blogspot.com/-raFYZvIFUV0/UwNI2ek6i3I/AAAAAAAAGSA/zs-kwq0q58E/s1600/facebook.png" alt="Facebook" />
+                            </a>
+                            <a href="https://twitter.com/share?url=https://pandacoder.top/blog/{{ blog.id }}&text={{ blog.title }}" target="_blank">
+                                <img src="https://4.bp.blogspot.com/--ISQEurz3aE/UwNI4hDaQMI/AAAAAAAAGS4/ZAgmPiM9Xpk/s1600/twitter.png" alt="Twitter" />
+                            </a>
+                            <a href="http://service.weibo.com/share/share.php?appkey=&title={{ blog.title }}&url=https://pandacoder.top/blog/{{ blog.id }}" target="_blank">
+                               <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/微博.png" alt="Weibo" />
+                           </a>
+                        </div>
+
+                        <hr>
+                        <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row">
+                            {% if pre %}
+                            <a href="{{ pre.get_absolutly_url }}" class="prev-post text-left d-flex align-items-center">
+                                <div class="icon prev"><i class="fa fa-angle-left"></i></div>
+                                <div class="text"><strong class="text-primary">上一篇 </strong>
+                                    <h6>{{pre.title}}</h6>
+                                </div>
+                            </a>
+                            {% else %}
+                            <a href="#" class="prev-post text-left d-flex align-items-center">
+                                <div class="icon prev"><i class="fa fa-angle-left"></i></div>
+                                <div class="text"><strong class="text-primary">上一篇 </strong>
+                                    <h6>这是最新的一篇</h6>
+                                </div>
+                            </a>
+                            {% endif %}
+
+                            {% if next %}
+                            <a href="{{ next.get_absolutly_url }}" class="next-post text-right d-flex align-items-center justify-content-end">
+                                <div class="text"><strong class="text-primary">下一篇 </strong>
+                                    <h6>{{ next.title }}</h6>
+                                </div>
+                                <div class="icon next"><i class="fa fa-angle-right"></i></div>
+                            </a>
+                            {% else %}
+                            <a href="#" class="next-post text-right d-flex align-items-center justify-content-end">
+                                <div class="text"><strong class="text-primary">下一篇 </strong>
+                                    <h6>这是最后一篇</h6>
+                                </div>
+                                <div class="icon next"><i class="fa fa-angle-right"></i></div>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <h3 class="h6">留言<span class="no-of-comments">({{ blog.comments.count }})</span></h3>
+                        <div class="add-comment">
+                            <form method="POST" class="commenting-form">
+                                {% csrf_token %}
+                                <div class="row ">
+                                    <textarea rows='1' placeholder='Auto-Expanding Textarea' name="comment"></textarea>
+                                    {% if user.is_authenticated %}
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-secondary">评论</button>
+                                    </div>
+                                    {% else %}
+                                    <div>
+                                        评论前请先登录
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                        <div class="post-comments">
+                            {% recursetree genres %}
+                            <div class="comment">
+                                <div class="comment-header d-flex justify-content-between">
+                                    <div class="user d-flex align-items-center">
+                                        <div class="image"><img src="{{ blog.author.profile_picture.url }}" alt="..." class="img-fluid rounded-circle"></div>
+                                        <div class="title"><span>{{ node.name }}</span>
+                                            <span><img src="{% static 'img/reply.svg' %}" alt=""></span>
+                                            <span style="font-weight: 100;font-size: smaller;">
+                                            {% if node.parent.name %}
+                                                {{ node.parent.name }}
+                                            {% endif %}</span>
+                                            <span class="date">
+
+                                            {{ node.timestamp }}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="comment-body">
+                                    <p>{{ node.body }}</p>
+                                    <p style="cursor:pointer" onclick="showTextarea({{node.id}})" class="comment_p">回复</p>
+                                    <div style="display:none;"  id="textarea{{node.id}}" class="textareas">
+                                        <form method="POST" class="commenting-form">
+                                            <input type="text" name="parent" value={{node.id}} hidden />
+                                            <div class="form-group">
+                                               <textarea class="form-control"  rows="2" name="comment"></textarea>
+                                             </div>
+                                            <button type="submit" class="btn btn-secondary btn-sm">发送</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                {% if not node.is_leaf_node %}
+                                    <ul class="children" style="padding-left: 80px;">
+                                        {{ children }}
+                                    </ul>
+                                {% endif %}
+                            </div>
+                            {% endrecursetree %}
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+                    <div id="photoswipe" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                    	<div class="pswp__bg"></div>
+                    	<div class="pswp__scroll-wrap">
+                    		<div class="pswp__container">
+                    			<div class="pswp__item"></div>
+                    			<div class="pswp__item"></div>
+                    			<div class="pswp__item"></div>
+                    		</div>
+                    		<div class="pswp__ui pswp__ui--hidden">
+                    			<div class="pswp__top-bar">
+                    				<div class="pswp__counter"></div>
+                    				<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    				<button class="pswp__button pswp__button--share" title="Share"></button>
+                    				<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    				<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    				<div class="pswp__preloader">
+                    					<div class="pswp__preloader__icn">
+                    						<div class="pswp__preloader__cut">
+                    							<div class="pswp__preloader__donut"></div>
+                    						</div>
+                    					</div>
+                    				</div>
+                    			</div>
+                    			<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    				<div class="pswp__share-tooltip"></div>
+                    			</div>
+                    			<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    			</button>
+                    			<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    			</button>
+                    			<div class="pswp__caption">
+                    				<div class="pswp__caption__center"></div>
+                    			</div>
+                    		</div>
+                    	</div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <!-- {% include 'aside.html' with recent=recent category_count=category_count %} -->
+    </div>
+</div>
+<!-- Page Footer-->
+<script type="text/javascript">
+	//评论的回复框
+    function showTextarea(str){
+        if($("#textarea"+str).is(":visible")){
+            $("#textarea"+str).attr("style","display:none;");
+        }else{
+            $(".textareas").each(function(){
+                $(this).hide();
+            })
+             $("#textarea"+str).show();
+        }
+
+    }
+
+</script>
+
+
+
+{% endblock %}

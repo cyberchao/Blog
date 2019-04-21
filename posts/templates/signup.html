@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="padding-top: 60px;">
+    <div class="login-wrap">
+      <h2>注册</h2>
+        <form novalidate action="/signup" method="post">
+            <div class="form">
+            <input type="text" placeholder="用户名" name="username" />
+                <div><small>{{ form.username.errors.0 }}</small></div>
+            <input type="text" placeholder="email" name="email" />
+                <div><small>{{ form.email.errors.0 }}</small></div>
+            <input type="password" placeholder="密码" name="password" />
+                <div><small>{{ form.password.errors.0 }}</small></div>
+            <input type="password" placeholder="确认密码" name="re_password" />
+                <div><small>{{ form.re_password.errors.0 }}</small></div>
+            <button type="submit" id="button">注册</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

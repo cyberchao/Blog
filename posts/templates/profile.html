@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="profilecard">
+    <div class="headercard">
+        <h2>{{ user.username }}</h2>
+        <img src="{{ user.profile_picture.url }}" class="profile">
+    </div>
+    <div class="content">
+        <form novalidate action="/change-profile" method="get">
+            <h3>我的名片</h3>
+            <p>website: <span><a href="{{ user.website }}" style="color:lightseagreen">{% if user.website %}{{ user.website }}{% else %}这里是空的{% endif %}</a></span>
+            <p>Github: <span><a href="{{ user.github }}" style="color:lightseagreen">{% if user.github %}{{ user.github }}{% else %}这里是空的{% endif %}</a></span>
+            <p>说点什么: <span>{% if user.introduction %}{{ user.introduction }}{% else %}这里是空的{% endif %}</span>
+            <p><button type="submit" class="btn btn-light">修改</button></p>
+        </form>
+    </div>
+</div>
+{% endblock %}

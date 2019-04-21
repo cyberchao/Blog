@@ -1,0 +1,10 @@
+Django==2.1.7
+django-crispy-forms==1.7.2
+django-js-asset==1.2.2
+django-mptt==0.9.1
+django-tinymce4-lite==1.7.4
+jsmin==2.2.2
+Pillow==5.2.0
+pycryptodome==3.8.1
+PyMySQL==0.9.3
+pytz==2018.9

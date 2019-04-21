@@ -1,0 +1,9 @@
+.a_music{
+    display: inline-block;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+.a_music img{
+    width:100%;
+}

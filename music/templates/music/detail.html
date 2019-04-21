@@ -1,0 +1,180 @@
+{% extends 'music/base.html' %}
+{% block title %}{{ album }}{% endblock %}
+{% block albums_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid songs-container">
+
+    <div class="row">
+
+        <!-- Left Album Info -->
+        <div class="col-sm-4 col-md-3">
+
+            <section id="art">
+                <div class="player">
+                    <img>
+                </div>
+
+            </section>
+            <h1>{{ album.album_title }}</h1>
+            <h3>{{ album.genre }}</h3>
+            <h2>{{ album.artist }}</h2>
+        </div>
+
+        <!-- 变更块 -->
+        <!-- <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'music:detail' album.id %}">View All</a></li>
+                <li role="presentation"><a href="{% url 'music:create_song' album.id %}">Add New Song</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>All Songs</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Audio File</th>
+                            <th>Favorite</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for song in album.song_set.all %}
+                            <tr>
+                                <td>{{ song.song_title }}</td>
+                                <td>
+                                    <a target="_blank" href="{{ song.audio_file.url }}">
+                                        <button type="button" class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-play"></span>&nbsp; Play
+                                        </button>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'music:favorite' song.id %}" class="btn-favorite"><span class="glyphicon glyphicon-star {% if song.is_favorite %}active{% endif %}"></span></a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'music:delete_song' album.id song.id %}" method="post" style="display: inline;">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="song_id" value="{{ song.id }}" />
+                                        <button type="submit" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-remove"></span>&nbsp; Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div> -->
+
+<div class="col-sm-8 col-md-9">
+
+        <ul class="nav nav-pills" style="margin-bottom: 10px;">
+            <li role="presentation" class="active"><a href="{% url 'music:detail' album.id %}">View All</a></li>
+            <li role="presentation"><a href="{% url 'music:create_song' album.id %}">Add New Song</a></li>
+        </ul>
+        <section id="playlist">
+            <table id="playlist" class="no-select">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <audio id="player"></audio>
+</div>
+<footer class="music-box">
+    <div class="tracking-wrap">
+        <span class="song-current-time">--:--</span>
+        <input class="tracking-slider range" type="range" min="0" value="0" step="1">
+        <span class="song-length">--:--</span>
+    </div>
+    <div class="dashboard">
+        <section id="controls">
+            <span class="fa fa-random shuffle"></span>
+            <span class="fa fa-fast-backward previous"></span>
+            <span class="fa fa-play play-pause"></span>
+            <span class="fa fa-fast-forward next"></span>
+            <span class="fa fa-repeat repeat on"></span>
+            <span id="volume">
+                <span class="fa fa-volume-down"></span>
+                <input class="volume-slider range" type="range" max="1" min="0" step="0.01" value="0.8">
+                <span class="fa fa-volume-up"></span>
+            </span>
+        </section>
+
+    </div>
+</footer>
+</div>
+
+</div>
+<script type="text/javascript">
+
+'use strict';
+const colors = {
+    aqua: {
+        25: '#A7DCCD',
+        50: '#5FBFA4',
+        80: '#2F7561'
+    },
+
+    metal: {
+        5: '#F3F3F1',
+        20: '#CFD0C8',
+        50: '#868975',
+        80: '#36372F',
+        90: '#272822'
+    }
+};
+
+
+
+// Control button elements
+const buttons = {
+    shuffle: document.querySelector('#controls .shuffle'),
+    previous: document.querySelector('#controls .previous'),
+    playPause: document.querySelector('#controls .play-pause'),
+
+
+    next: document.querySelector('#controls .next'),
+    repeat: document.querySelector('#controls .repeat')
+};
+
+// Range & Time elements
+const songCurrentTime = document.querySelector('.song-current-time');
+const songLength = document.querySelector('.song-length');
+const trackingSlider = document.querySelector('.tracking-slider');
+const volumeSlider = document.querySelector('.volume-slider');
+
+// Art
+const artPlayer = document.querySelector('#art .player');
+const playerArt = document.querySelector('#art .player img');
+// Playlist
+const playlistBody = document.querySelector('#playlist tbody');
+let listItems = document.querySelectorAll('#playlist tbdoy tr');
+
+// Audio Element
+const audio = document.getElementById('player');
+// Base route for archive url
+const archiveBase = 'http://archive.org/download/';
+
+const songList = {{ playlist|safe }};
+
+
+</script>
+
+{% endblock %}

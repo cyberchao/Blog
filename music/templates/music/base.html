@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My music{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}" />
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/music.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css'>
+    <script src="{% static 'js/music.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/music/css/font-awsome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'music/css/bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/musicplay.css' %}">
+    <link rel="stylesheet" href="{% static 'css/musicbtn.css' %}">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Header -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'music:index' %}">My music</a>
+            </div>
+            <!-- Items -->
+            <div class="collapse navbar-collapse" id="topNavBar">
+                <ul class="nav navbar-nav">
+                    <li class="{% block albums_active %}{% endblock %}"><a href="{% url 'music:index' %}"><span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp; Albums</a></li>
+                    <li class="{% block songs_active %}{% endblock %}"><a href="{% url 'music:songs' 'all' %}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp; Songs</a></li>
+                    <li>
+                        <a href="{% url 'music:create_album' %}">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Album
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'music:index' %}">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+                        </div>
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    {% block body %}
+    {% endblock %}
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+<script src="{% static 'js/musicplay.js' %}"></script>
+
+</html>

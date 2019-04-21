@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="profilecard">
+    <form novalidate action="/change-profile" method="post" enctype="multipart/form-data">
+    <div class="headercard">
+        <h2>{{ user.username }}</h2>
+        <input type="file" name="avatar" src="{{ user.profile_picture.url }}"><img src="{{ user.profile_picture.url }}" class="profile">
+    </div>
+    <div class="content" style="height:500px">
+
+            <h3>我的名片</h3>
+            <p>website: <span><input class="form-control mr-sm-2" placeholder="{{ user.website }}" name="website"></span></p>
+            <p>Github:  <span><input class="form-control mr-sm-2" placeholder="{{ user.github }}" name="github"></span></p>
+            <p>说点什么:  <span><input class="form-control mr-sm-2" placeholder="{{ user.introduction }}" name="introduction"></span></p>
+            <button type="submit" class="btn btn-light">保存修改</button>
+
+    </div>
+    </form>
+</div>
+{% endblock %}
