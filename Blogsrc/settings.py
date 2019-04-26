@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'mptt',
     'comment',
     'music',
+    'corsheaders',
 ]
 
 AUTH_USER_MODEL = "posts.Users"
@@ -48,7 +49,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
 
 ROOT_URLCONF = 'Blogsrc.urls'
 

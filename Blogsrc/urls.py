@@ -7,7 +7,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('posts.urls')),
     path('tinymce/', include('tinymce.urls')),
-    path('music/', include('music.urls'))
+    path('music/', include('music.urls')),
+    path('oss/', include('oss.urls')),
 ]
 
 if settings.DEBUG:
