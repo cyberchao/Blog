@@ -1,5 +1,5 @@
 
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render, HttpResponse
 import socket
 import base64
 import sys
@@ -15,18 +15,21 @@ access_key_id = 'LTAI5AYKfHBArSBR'
 # 请填写您的AccessKeySecret。
 access_key_secret = 'zxUBEOnfPCP2NPrBVD5TdhwNROcZ9m'
 # host的格式为 bucketname.endpoint ，请替换为您的真实信息。
-host = 'http://pandacoderblog.oss-cn-shanghai.aliyuncs.com';
+host = 'http://pandacoderblog.oss-cn-shanghai.aliyuncs.com'
 # callback_url为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-callback_url = "http://pandacoder.top/oss/";
+callback_url = "http://pandacoder.top/oss/"
 # 用户上传文件时指定的前缀。
 upload_dir = 'music/'
 expire_time = 30
 
 # Create your views here.
+
+
 def get_iso_8601(expire):
     gmt = datetime.datetime.utcfromtimestamp(expire).isoformat()
     gmt += 'Z'
     return gmt
+
 
 def get_token():
     now = int(time.time())
@@ -38,9 +41,9 @@ def get_token():
     policy_dict['expiration'] = expire
     condition_array = []
     array_item = []
-    array_item.append('starts-with');
-    array_item.append('$key');
-    array_item.append(upload_dir);
+    array_item.append('starts-with')
+    array_item.append('$key')
+    array_item.append(upload_dir)
     condition_array.append(array_item)
     policy_dict['conditions'] = condition_array
     policy = json.dumps(policy_dict).strip()
@@ -48,14 +51,14 @@ def get_token():
     h = hmac.new(access_key_secret.encode(), policy_encode, sha)
     sign_result = base64.encodestring(h.digest()).strip()
 
-    album=3
+    album = 3
     callback_dict = {}
-    callback_dict['callbackUrl'] = callback_url;
-    callback_dict['callbackBody'] = 'filename=${object}&size=${size}';
-    callback_dict['callbackBodyType'] = 'application/x-www-form-urlencoded';
+    callback_dict['callbackUrl'] = callback_url
+    callback_dict['callbackBody'] = 'filename=${object}&size=${size}'
+    callback_dict['callbackBodyType'] = 'application/x-www-form-urlencoded'
     callback_param = json.dumps(callback_dict).strip()
     print(callback_param)
-    base64_callback_body = base64.b64encode(callback_param.encode());
+    base64_callback_body = base64.b64encode(callback_param.encode())
     print(base64_callback_body)
 
     token_dict = {}
@@ -69,17 +72,21 @@ def get_token():
     result = json.dumps(token_dict)
     return result
 
+
 def tem(request):
     if request.method == 'GET':
         return HttpResponse(get_token())
     else:
-        print('88880000'+str(request.POST))
+        print('88880000' + str(request.POST))
+        do_POST(request)
         return HttpResponse('{"Status":"OK"}'.encode())
 
+
 def do_POST(request):
-    Song.album=request.POST['albumid'][0]
-    Song.song_title=request.POST['filename'][0]
-    Song.audio_file='https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/'+request.POST['filename'][0]
-    Song.ytburl=request.POST['ytb'][0]
-    Song.length=201
-    Song.save()
+    album = request.POST['albumid'][0]
+    song_title = request.POST['filename'][0]
+    audio_file = 'https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/' + \
+        request.POST['filename'][0]
+    ytburl = request.POST['ytb'][0]
+    length = 201
+    Song.objects.create(album=album, song_title=song_title, audio_file=audio_file, ytburl=ytburl, length=length)
