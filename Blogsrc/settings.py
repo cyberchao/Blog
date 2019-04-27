@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'Blogsrc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Blogv1',
+        'NAME': 'Blogv2',
         'USER': 'root',
         'PASSWORD': 'Pangru123',
         'HOST': '47.106.230.2',
@@ -174,11 +174,11 @@ EMAIL_HOST_USER = 'pr951029@163.com'  # 帐号
 EMAIL_HOST_PASSWORD = 'pr951029'  # 密码
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-ACCESS_KEY_ID = "LTAI5AYKfHBArSBR"
-ACCESS_KEY_SECRET = "zxUBEOnfPCP2NPrBVD5TdhwNROcZ9m"
-END_POINT = "oss-cn-shanghai.aliyuncs.com"
-BUCKET_NAME = "pandacoderblog"
-ALIYUN_OSS_CNAME = "" # 自定义域名，如果不需要可以不填写
-BUCKET_ACL_TYPE = "public-read" # private, public-read, public-read-write
+# ACCESS_KEY_ID = "LTAI5AYKfHBArSBR"
+# ACCESS_KEY_SECRET = "zxUBEOnfPCP2NPrBVD5TdhwNROcZ9m"
+# END_POINT = "oss-cn-shanghai.aliyuncs.com"
+# BUCKET_NAME = "pandacoderblog"
+# ALIYUN_OSS_CNAME = "" # 自定义域名，如果不需要可以不填写
+# BUCKET_ACL_TYPE = "public-read" # private, public-read, public-read-write
 
-DEFAULT_FILE_STORAGE = 'aliyun_oss2_storage.backends.AliyunMediaStorage'
+# DEFAULT_FILE_STORAGE = 'aliyun_oss2_storage.backends.AliyunMediaStorage'

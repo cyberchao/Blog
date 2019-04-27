@@ -55,7 +55,7 @@ def get_token():
     callback_param = json.dumps(callback_dict).strip()
     print(callback_param)
     base64_callback_body = base64.b64encode(callback_param.encode());
-    print(base64_callback_body)    
+    print(base64_callback_body)
 
     token_dict = {}
     token_dict['accessid'] = access_key_id
@@ -64,7 +64,7 @@ def get_token():
     token_dict['signature'] = sign_result.decode()
     token_dict['expire'] = expire_syncpoint
     token_dict['dir'] = upload_dir
-    token_dict['callback'] = base64_callback_body.decode()
+    # token_dict['callback'] = base64_callback_body.decode()
     result = json.dumps(token_dict)
     return result
 
@@ -127,4 +127,3 @@ def do_POST(server):
     server.send_header('Content-Length', str(len(resp_body)))
     server.end_headers()
     server.wfile.write(resp_body.encode())
-

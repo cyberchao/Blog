@@ -20,8 +20,9 @@ class Album(models.Model):
 
 class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    song_title = models.CharField(max_length=250)
-    audio_file = models.FileField(upload_to='music')
+    song_title = models.CharField(max_length=100)
+    audio_file = models.CharField(max_length=200)
+    ytburl = models.CharField(max_length=200, blank=True)
     length = models.IntegerField()
 
     def __str__(self):
