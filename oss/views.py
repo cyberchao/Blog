@@ -1,4 +1,4 @@
-
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, HttpResponse
 import socket
 import base64
@@ -8,7 +8,7 @@ import datetime
 import json
 import hmac
 from hashlib import sha1 as sha
-from music.models import Song
+from music.models import Song, Album
 
 # 请填写您的AccessKeyId。
 access_key_id = 'LTAI5AYKfHBArSBR'
@@ -57,9 +57,7 @@ def get_token():
     callback_dict['callbackBody'] = 'filename=${object}&size=${size}'
     callback_dict['callbackBodyType'] = 'application/x-www-form-urlencoded'
     callback_param = json.dumps(callback_dict).strip()
-    print(callback_param)
     base64_callback_body = base64.b64encode(callback_param.encode())
-    print(base64_callback_body)
 
     token_dict = {}
     token_dict['accessid'] = access_key_id
@@ -77,16 +75,16 @@ def tem(request):
     if request.method == 'GET':
         return HttpResponse(get_token())
     else:
-        print('88880000' + str(request.POST))
         do_POST(request)
         return HttpResponse('{"Status":"OK"}'.encode())
 
 
 def do_POST(request):
-    album = request.POST['albumid'][0]
-    song_title = request.POST['filename'][0]
+    album = get_object_or_404(Album, pk=request.POST['albumid'])
+    
+    song_title = request.POST['filename']
     audio_file = 'https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/' + \
-        request.POST['filename'][0]
-    ytburl = request.POST['ytb'][0]
+        request.POST['filename']
+    ytburl = request.POST['ytb']
     length = 201
     Song.objects.create(album=album, song_title=song_title, audio_file=audio_file, ytburl=ytburl, length=length)
