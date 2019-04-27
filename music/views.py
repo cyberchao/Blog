@@ -138,7 +138,8 @@ def detail(request, album_id):
                         'art': {
                             'square': album.album_logo.url,
                         }},
-                    'url': song.audio_file
+                    'url': song.audio_file,
+                    # 'ytburl': song.ytburl
                     }
             playlist.append(song)
         jsonlist = json.dumps(playlist, ensure_ascii=False)

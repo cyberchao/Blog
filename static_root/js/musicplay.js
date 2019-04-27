@@ -98,7 +98,17 @@ class Player {
         audio.src = song.url;
         trackingSlider.value = 0;
         this.updateSongRangeValues();
-        songLength.innerHTML = secondsToHms(song.duration);
+        var _audio = $('#player')[0];
+        console.log(_audio);
+
+        _audio.load();
+        var time = ''
+        _audio.oncanplay = function () {
+        	time = _audio.duration;
+            songLength.innerHTML = secondsToHms(time);
+        }
+
+        // songLength.innerHTML = secondsToHms(time);
         trackingSlider.max = song.duration;
 
         playerArt.src = song.album.art.square;
@@ -388,7 +398,6 @@ function buildPlaylist() {
             <tr data-index="${index}">
               <td>${song.title}</td>
               <td>${song.album.title}</td>
-              <td>${secondsToHms(song.duration)}</td>
             </tr>
 
             `;
