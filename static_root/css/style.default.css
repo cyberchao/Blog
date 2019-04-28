@@ -1336,6 +1336,7 @@ main.posts-listing .post-footer {
 
 .blog-post .post-body {
   margin-top: 40px;
+  font-size: smaller;
 }
 
 .blog-post .post-body h2,
