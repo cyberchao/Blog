@@ -111,7 +111,6 @@ function get_uploaded_object_name(filename)
     {
         tmp_name = g_object_name
         tmp_name = tmp_name.replace("${filename}", filename);
-        // window.alert(tmp_name)
         return tmp_name
     }
     else if(g_object_name_type == 'random_name')
@@ -186,7 +185,6 @@ var uploader = new plupload.Uploader({
 
 		BeforeUpload: function(up, file) {
             check_object_radio();
-            window.alert(file.name)
             set_upload_param(up, file.name, true);
         },
 

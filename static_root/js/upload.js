@@ -111,7 +111,6 @@ function get_uploaded_object_name(filename)
     {
         tmp_name = g_object_name
         tmp_name = tmp_name.replace("${filename}", filename);
-        // window.alert(tmp_name)
         return tmp_name
     }
     else if(g_object_name_type == 'random_name')
@@ -163,7 +162,7 @@ var uploader = new plupload.Uploader({
         mime_types : [ //只允许上传图片和zip文件
         { title : "Image files", extensions : "mp3, ogg, wav, wma" },
         ],
-        max_file_size : '10mb', //最大只能上传10mb的文件
+        max_file_size : '50mb', //最大只能上传10mb的文件
         prevent_duplicates : true //不允许选取重复文件
     },
 
@@ -186,7 +185,6 @@ var uploader = new plupload.Uploader({
 
 		BeforeUpload: function(up, file) {
             check_object_radio();
-            window.alert(file.name)
             set_upload_param(up, file.name, true);
         },
 

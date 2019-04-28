@@ -131,7 +131,7 @@ def detail(request, album_id):
         album = get_object_or_404(Album, pk=album_id)
         songs = Song.objects.filter(album=album)
         for song in songs:
-            song = {'title': song.song_title,
+            song = {'title': song.song_title.strip('music/').split('.')[0],
                     'duration': song.length,
                     "album": {
                         'title': song.album.album_title,
