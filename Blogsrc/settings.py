@@ -14,10 +14,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+1tqpr8%kbv5%a!i897qikk*(_tikhh2cms(ygca151qdh0r++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['www.pandacoder.top',
-                 '47.106.230.2', 'pandacoder.top', '127.0.0.1', ]
+ALLOWED_HOSTS = ['www.ksprd.top',
+                'ksprd.top', '127.0.0.1','176.122.138.186' ]
 
 
 # Application definition
@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'Blogsrc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Blogv3',
+        'NAME': 'Blog',
         'USER': 'root',
-        'PASSWORD': 'Pangru123',
-        'HOST': '47.106.230.2',
+        'PASSWORD': 'pangru123',
+        'HOST': '176.122.138.186',
         'PORT': '3306'
     }
 }
