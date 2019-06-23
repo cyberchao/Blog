@@ -15,20 +15,19 @@
                     <div class="post-details">
                         <!-- <hr> -->
                         <div class="post-meta d-flex justify-content-between">
-                            <div class="category">
-                                <a href="{% url 'get_category_blogs' id=blog.category_id %}">{{ blog.category }}</a>
-                            </div>
+
                         </div>
 
                         <h3 style="text-align: center;">{{ blog.title }}</h3>
-                        <div class="post-footer d-flex align-items-center flex-column"><a href="#" class="author d-flex align-items-center flex-wrap">
+                        <div class="post-footer d-flex align-items-center flex-column"><div class="author d-flex align-items-center flex-wrap">
                                 <div class="avatar"><img src="{{ blog.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
                                 <div class="title"><span>{{ blog.author }}</span></div>
-                            </a>
+                            </div>
                             <div class="d-flex align-items-center flex-wrap" style="padding-top:20px">
-                                <div class="date"><i class="icon-clock"></i> {{ blog.timestamp|timesince }} ago</div>
-                                <div class="views"><i class="icon-eye"></i> {{ blog.view_count }}</div>
-                                <div class="comments meta-last"><i class="icon-comment"></i>{{ blog.comment.count }}</div>
+                                <div class="date">{{ blog.timestamp }}</div>
+                                <div class="views">阅读-{{ blog.view_count }}</div>
+                                <div class="views">评论-{{ blog.comment.count }}</div>
+                                <div class="views">分类-<a href="{% url 'get_category_blogs' id=blog.category_id %}" style="color: darkorange;">{{ blog.category }}</a></div>
                             </div>
                         </div>
                         <hr>
@@ -42,6 +41,7 @@
                         </div>
 
                         <div id="share-buttons" style="padding-top: 25px;">
+                            <span>分享到 - </span>
                             <a href="https://www.facebook.com/sharer.php?u=https://frinmash.blogspot.com" target="_blank">
                                 <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20190623165315.png" alt="Facebook" />
                             </a>
@@ -87,13 +87,6 @@
                             </a>
                             {% endif %}
                         </div>
-
-
-
-
-
-
-
                     </div>
 
                     <div id="photoswipe" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -135,10 +128,10 @@
 
                 </div>
             </div>
-            <div class="post-comments">
-                <div class="row justify-content-center">
+            <div class="post-comments" style="    padding-top: 45px;">
+                <div class="row justify-content-center" style="    padding-bottom: 130px;">
                     <div class="col-10">
-                        <h3 class="h6">留言<span class="no-of-comments">({{ blog.comment.count }})</span></h3>
+                        <h3 class="h6">评论一下<span class="no-of-comments">({{ blog.comment.count }})</span></h3>
                         <div>
                             <form method="POST" class="commenting-form">
                                 {% csrf_token %}
@@ -150,8 +143,8 @@
                                     <button type="submit" class="btn btn-outline-dark btn-sm">发送</button>
                                 </div>
                                 {% else %}
-                                <div>
-                                    评论前请先登录
+                                <div style="text-align: center;">
+                                    评论前请先 <a style="color: lightseagreen;font-weight: 700;" href="{% url 'login' %}">登录</a> 或 <a style="color: lightseagreen;font-weight: 700;" href="{% url 'signup' %}">注册</a>
                                 </div>
                                 {% endif %}
 
