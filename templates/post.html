@@ -5,13 +5,13 @@
 {% for message in messages %}
 <p class="alert alert-primary" role='alert'>{{message}}</p>
 {% endfor %}
-<div class="container" id="post_container">
+<div class="container" id="post_container" style="width: 82%;">
     <div class="row">
         <!-- Latest Posts -->
         <main class="post blog-post col-lg-12">
-            <div class="container">
+            <div class="container" style="width: 86%;">
 
-                <div style="margin-left: 60px;margin-right: 60px;">
+                <div>
                     <div class="post-details">
                         <!-- <hr> -->
                         <div class="post-meta d-flex justify-content-between">
@@ -28,7 +28,7 @@
                             <div class="d-flex align-items-center flex-wrap" style="padding-top:20px">
                                 <div class="date"><i class="icon-clock"></i> {{ blog.timestamp|timesince }} ago</div>
                                 <div class="views"><i class="icon-eye"></i> {{ blog.view_count }}</div>
-                                <div class="comments meta-last"><i class="icon-comment"></i>{{ blog.comments.count }}</div>
+                                <div class="comments meta-last"><i class="icon-comment"></i>{{ blog.comment.count }}</div>
                             </div>
                         </div>
                         <hr>
@@ -43,10 +43,10 @@
 
                         <div id="share-buttons" style="padding-top: 25px;">
                             <a href="https://www.facebook.com/sharer.php?u=https://frinmash.blogspot.com" target="_blank">
-                                <img src="https://4.bp.blogspot.com/-raFYZvIFUV0/UwNI2ek6i3I/AAAAAAAAGSA/zs-kwq0q58E/s1600/facebook.png" alt="Facebook" />
+                                <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20190623165315.png" alt="Facebook" />
                             </a>
                             <a href="https://twitter.com/share?url=https://pandacoder.top/blog/{{ blog.id }}&text={{ blog.title }}" target="_blank">
-                                <img src="https://4.bp.blogspot.com/--ISQEurz3aE/UwNI4hDaQMI/AAAAAAAAGS4/ZAgmPiM9Xpk/s1600/twitter.png" alt="Twitter" />
+                                <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20190623164922.png" alt="Twitter" />
                             </a>
                             <a href="http://service.weibo.com/share/share.php?appkey=&title={{ blog.title }}&url=https://pandacoder.top/blog/{{ blog.id }}" target="_blank">
                                 <img src="https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/微博.png" alt="Weibo" />
@@ -96,10 +96,6 @@
 
                     </div>
 
-
-
-
-
                     <div id="photoswipe" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="pswp__bg"></div>
                         <div class="pswp__scroll-wrap">
@@ -139,73 +135,73 @@
 
                 </div>
             </div>
-            <div class="">
-                <div class="post-comments">
-                    <div class="row justify-content-center">
-                        <div class="col-10">
-                            <h3 class="h6">留言<span class="no-of-comments">({{ blog.comments.count }})</span></h3>
-                            <div>
-                                <form method="POST" class="commenting-form">
-                                    {% csrf_token %}
-                                    <div class="form-group  col-md-12">
-                                        <textarea rows='3' name="comment" class="form-control"></textarea>
-                                    </div>
-                                    {% if user.is_authenticated %}
-                                    <div class="form-group col-md-12">
-                                        <button type="submit" class="btn btn-secondary">评论</button>
-                                    </div>
-                                    {% else %}
-                                    <div>
-                                        评论前请先登录
-                                    </div>
-                                    {% endif %}
-
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    {% recursetree genres %}
-                    <div class="comment">
-                        <div class="row comment_row">
-                            <div class="col-2">
-                                <div class="image"><img src="{{ blog.author.profile_picture.url }}" alt="..."></div>
-
-                            </div>
-                            <div class="col-9">
-                                <div class="title"><span>{{ node.name }}</span>
-                                    <span class="badge badge-pill badge-dark">author</span>
-                                    <span class="date">
-                                        {{ node.timestamp }}</span>
-                                    <span style="cursor:pointer;float:right;" onclick="showTextarea({{node.id}})" class="comment_p">回复</span>
+            <div class="post-comments">
+                <div class="row justify-content-center">
+                    <div class="col-10">
+                        <h3 class="h6">留言<span class="no-of-comments">({{ blog.comment.count }})</span></h3>
+                        <div>
+                            <form method="POST" class="commenting-form">
+                                {% csrf_token %}
+                                <div class="form-group  col-md-12">
+                                    <textarea rows='3' name="comment" class="form-control"></textarea>
                                 </div>
-                                <div class="comment-body">
-                                    <p>{{ node.body }}</p>
-                                    <div style="display:none;" id="textarea{{node.id}}" class="textareas">
-                                        <form method="POST" class="commenting-form">
-                                            <input type="text" name="parent" value={{node.id}} hidden />
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="2" name="comment"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-outline-dark btn-sm">发送</button>
-                                        </form>
-                                    </div>
+                                {% if user.is_authenticated %}
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn btn-outline-dark btn-sm">发送</button>
                                 </div>
+                                {% else %}
+                                <div>
+                                    评论前请先登录
+                                </div>
+                                {% endif %}
 
-                            </div>
-
+                            </form>
                         </div>
 
-                        {% if not node.is_leaf_node %}
-                        <ul class="children" style="padding-left: 80px;">
-                            {{ children }}
-                        </ul>
-                        {% endif %}
                     </div>
-                    {% endrecursetree %}
                 </div>
+
+
+                {% recursetree genres %}
+                <div class="comment">
+                    <div class="row comment_row" style="padding-right: 35px">
+                        <div class="col-2">
+                            <div class="image"><img src="{{ node.name.profile_picture.url }}" alt="..."></div>
+
+                        </div>
+                        <div class="col-9">
+                            <div class="title"><span>{{ node.name }}</span>
+                                {% if node.name == blog.author %}
+                                <span class="badge badge-pill badge-dark">author</span>
+                                {% endif %}
+                                <span class="date">
+                                    {{ node.timestamp }}</span>
+                                <span style="cursor:pointer;float:right;" onclick="showTextarea({{node.id}})" class="comment_p">回复</span>
+                            </div>
+                            <div class="comment-body">
+                                <p>{{ node.body }}</p>
+                                <div style="display:none;" id="textarea{{node.id}}" class="textareas">
+                                    <form method="POST" class="commenting-form">
+                                        <input type="text" name="parent" value={{node.id}} hidden />
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="2" name="comment"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-dark btn-sm">发送</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% if not node.is_leaf_node %}
+                    <ul class="children" style="padding-left: 80px;">
+                        {{ children }}
+                    </ul>
+                    {% endif %}
+                </div>
+                {% endrecursetree %}
             </div>
         </main>
         <!-- {% include 'aside.html' with recent=recent category_count=category_count %} -->

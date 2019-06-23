@@ -18,6 +18,7 @@
     border:3px solid white;
     border-radius: 5px;
 
+
 }
 .post-comments .comment .col-9{
     background-color: white;
@@ -140,12 +141,22 @@ color: #656C7A;
 #post_container .post-body img {
     max-width: 100%;
     height: auto;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
 }
 
 /* 背景图片 */
 body>div {
-    /* background: url("../img/denys-nevozhai-1335535-unsplash.jpg"); */
-    background-color: #242424;
+    /* background:
+    linear-gradient(163deg, transparent 0px, transparent 1px, #222 1px, #222 14px, transparent 14px),
+    linear-gradient(161deg, transparent 0px, #181818 1px, #222 2px, #222 15px, transparent 15px),
+    linear-gradient(343deg, transparent 0px, transparent 1px, #222 1px, #222 14px, transparent 14px),
+    linear-gradient(343deg, transparent 0px, transparent 1px, #222 1px, #222 14px, transparent 14px);
+  background-color: #121212;
+  background-position: 2px 1px, 23px 16px,48px 15px, 21px 30px;
+  background-size: 48px 30px; */
+    background: url("https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/%E5%80%BE%E5%90%AC/background.jpg");
+    /* background-color: #242424;
+    /* position: relative; */
     position: relative;
 }
 
@@ -425,8 +436,9 @@ h1{
   color: #03A9F4;
 }
 body{
-    background-color: #f8f8fa;
-    font-family: sans-serif;
+    background-color: azure;
+    overflow: hidden;
+    margin: 0px;
 }
 
 .panel{

@@ -1,0 +1,8 @@
+{
+  "AutoStart": true,
+  "DisableEncryption": false,
+  "DownloadDirectory": "/opt/Blogsite/Blog/downloads",
+  "EnableUpload": true,
+  "EnableSeeding": false,
+  "IncomingPort": 50007
+}

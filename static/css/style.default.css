@@ -67,7 +67,6 @@ button {
 
 main,
 aside {
-  padding: 50px 0 100px;
 }
 
 h1 a {
@@ -1336,7 +1335,7 @@ main.posts-listing .post-footer {
 
 .blog-post .post-body {
   margin-top: 40px;
-  font-size: smaller;
+  font-size: 14px;
 }
 
 .blog-post .post-body h2,
@@ -1404,9 +1403,7 @@ main.posts-listing .post-footer {
 }
 
 .blog-post .post-comments {
-  margin-top: 50px;
-  background-color: lightblue;
-  padding: 10px;
+  background-color: #F6F6F6;
 }
 
 .blog-post .post-comments span.no-of-comments {
@@ -2240,10 +2237,9 @@ h6,
 .h5,
 .h6 {
   margin-bottom: 0.5rem;
-  font-family: cursive;
   font-weight: 700;
   line-height: 1.1;
-  color: cornflowerblue;
+  color: black;
 }
 
 h1,
@@ -2516,7 +2512,7 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 .text-primary {
-  color: #999 !important;
+  color: tomato;
 }
 
 a.text-primary:focus, a.text-primary:hover {
