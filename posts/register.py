@@ -40,7 +40,7 @@ def signup(request):
             code = base64.encodebytes(ciphertext).decode('utf-8')
             code = code.replace(
                 '/', 'slash').replace('=', 'equal').replace('+', 'plus').replace('%', 'percent')
-            active_url = 'pandacoder.top/active/' + code
+            active_url = 'ksprd.top/active/' + code
             send_mail('验证邮件', '请点击以下链接以激活您的账号：' + active_url,
                       'pr951029@163.com', [email], fail_silently=False)
 
