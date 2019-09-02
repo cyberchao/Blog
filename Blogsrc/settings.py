@@ -16,8 +16,8 @@ SECRET_KEY = '+1tqpr8%kbv5%a!i897qikk*(_tikhh2cms(ygca151qdh0r++'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.ksprd.top','http://www.ksprd.top',
-                'ksprd.top', '127.0.0.1','104.28.6.10','176.122.138.176' ]
+ALLOWED_HOSTS = ['www.ksprd.top', 'http://www.ksprd.top',
+                 'ksprd.top', '127.0.0.1', '104.28.6.10', '176.122.138.176']
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'Blog',
         'USER': 'root',
         'PASSWORD': 'pangru123',
-        'HOST': '176.122.138.176',
+        'HOST': '172.17.0.3',
         'PORT': '3306'
     }
 }
@@ -178,7 +178,7 @@ ACCESS_KEY_ID = "LTAI5AYKfHBArSBR"
 ACCESS_KEY_SECRET = "zxUBEOnfPCP2NPrBVD5TdhwNROcZ9m"
 END_POINT = "oss-cn-shanghai.aliyuncs.com"
 BUCKET_NAME = "pandacoderblog"
-ALIYUN_OSS_CNAME = "" # 自定义域名，如果不需要可以不填写
-BUCKET_ACL_TYPE = "public-read" # private, public-read, public-read-write
+ALIYUN_OSS_CNAME = ""  # 自定义域名，如果不需要可以不填写
+BUCKET_ACL_TYPE = "public-read"  # private, public-read, public-read-write
 
 DEFAULT_FILE_STORAGE = 'aliyun_oss2_storage.backends.AliyunMediaStorage'

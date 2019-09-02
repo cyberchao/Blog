@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="qowttYi_pvGvMIMrBArjmgUFw1QuH8KZkGuD97JzSUs" />
     <link rel="shortcuts icon" href="{% static 'img/icon.ico' %}">
-    <title>侧耳倾听</title>
+    {% if blog.title == none %}
+    <title>侧耳倾听-Devops个人博客</title>
+    
+    {% else %}
+    <title>{{ blog.title }}</title>
+    {% endif %}
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontastic.css' %}">
