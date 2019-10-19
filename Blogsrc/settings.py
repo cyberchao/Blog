@@ -17,7 +17,7 @@ SECRET_KEY = '+1tqpr8%kbv5%a!i897qikk*(_tikhh2cms(ygca151qdh0r++'
 DEBUG = False
 
 ALLOWED_HOSTS = ['www.ksprd.top', 'http://www.ksprd.top',
-                 'ksprd.top', '127.0.0.1', '104.28.6.10', '176.122.138.176']
+                 'ksprd.top', '127.0.0.1', '104.28.6.10', '104.168.154.24']
 
 
 # Application definition
