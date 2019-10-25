@@ -1,3 +1,4 @@
+
 $(function(){
     console.log($(".alert-primary").length);
     if($(".alert-primary").length){

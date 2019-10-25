@@ -1,5 +1,4 @@
 from django import forms
-from tinymce import TinyMCE
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
 
@@ -58,11 +57,6 @@ class NewUser(forms.Form):
                     self.add_error('re_password', ValidationError('两次密码不一致'))
                 else:
                     return self.cleaned_data
-
-
-class TinyMCEWidget(TinyMCE):
-    def use_required_attribute(self, *args):
-        return False
 
 
 class UploadFileForm(forms.Form):

@@ -203,6 +203,9 @@
 <!-- Page Footer-->
 <script type="text/javascript">
     //评论的回复框
+    $(document).ready(function(){
+        $("pre").addClass("prettyprint linenums");
+    })
     function showTextarea(str) {
         if ($("#textarea" + str).is(":visible")) {
             $("#textarea" + str).attr("style", "display:none;");
@@ -212,7 +215,6 @@
             })
             $("#textarea" + str).show();
         }
-
     }
 </script>
 

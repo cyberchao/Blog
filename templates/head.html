@@ -7,23 +7,22 @@
     <link rel="shortcuts icon" href="{% static 'img/icon.ico' %}">
     {% if blog.title == none %}
     <title>侧耳倾听-Devops个人博客</title>
-    
     {% else %}
     <title>{{ blog.title }}</title>
     {% endif %}
+    <link rel="stylesheet" href="{% static 'vendor/google-code-prettify/skins/Tranquil.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/fontastic.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/obsidian.css' %}">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="{% static 'css/rili.css' %}">
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'js/blog.js' %}"></script>
-    <!-- <script src="{% static 'js/jquery.min.js' %}"></script> -->
-    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css'>
+
     <script src="{% static 'js/rili.js' %}"></script>
 </head>
