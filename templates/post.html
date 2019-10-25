@@ -32,7 +32,10 @@
                         </div>
                         <hr>
                         <div class="post-body">
-                            {{ blog.content|safe }}
+                            <div class="fr-view">
+                                {{ blog.content|safe }}
+                            </div>
+
                         </div>
                         <div class="post-tags">
                             {% for tag in blog.tags.all %}
