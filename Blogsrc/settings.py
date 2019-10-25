@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '+1tqpr8%kbv5%a!i897qikk*(_tikhh2cms(ygca151qdh0r++'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['www.ksprd.top', 'http://www.ksprd.top',
                  'ksprd.top', '127.0.0.1', '104.28.6.10', '104.168.154.24']
@@ -30,13 +30,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts',
-    'tinymce',
     'crispy_forms',
     'mptt',
     'comment',
     'music',
     'corsheaders',
+    'froala_editor',
 ]
+
+FROALA_EDITOR_THEME = 'dark'
 
 AUTH_USER_MODEL = "posts.Users"
 
@@ -86,8 +88,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Blog',
         'USER': 'root',
-        'PASSWORD': 'pangru123',
-        'HOST': '172.17.0.3',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
         'PORT': '3306'
     }
 }
@@ -136,35 +138,6 @@ VENV_PATH = os.path.dirname(BASE_DIR)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_URL = '/Blog_media/'
 # MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
-
-# tinymce
-TINYMCE_DEFAULT_CONFIG = {
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'theme': 'modern',
-    'language': 'zh_CN',
-    'plugins': '''
-            textcolor save link image media preview codesample contextmenu
-            table code lists fullscreen  insertdatetime  nonbreaking
-            contextmenu directionality searchreplace wordcount visualblocks
-            visualchars code fullscreen autolink lists  charmap print  hr
-            anchor pagebreak autosave
-            ''',
-    'toolbar1': '''
-            fullscreen preview bold italic underline | fontselect,
-            fontsizeselect  | forecolor backcolor | alignleft alignright |
-            aligncenter alignjustify | indent outdent | bullist numlist table |
-            | link image media | codesample |
-            ''',
-    'toolbar2': '''
-            visualblocks visualchars |
-            charmap hr pagebreak nonbreaking anchor |  code |
-            ''',
-    'contextmenu': 'formats | link image',
-    'menubar': True,
-    'statusbar': True,
-}
 
 
 EMAIL_USE_SSL = True
