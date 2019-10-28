@@ -1346,10 +1346,6 @@ main.posts-listing .post-footer {
   color: #333;
 }
 
-.blog-post .post-body p {
-  margin-bottom: 30px;
-}
-
 .blog-post .post-body p:not(.lead) {
   /* font-size: 1em; */
   /* line-height: 1.7em; */
@@ -2220,7 +2216,6 @@ a {
 }
 
 a:focus, a:hover {
-  color: #737373;
   text-decoration: underline;
 }
 
