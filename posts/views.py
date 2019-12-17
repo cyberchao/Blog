@@ -225,6 +225,14 @@ def get_tag_blogs(request, id):
     return render(request, 'blog.html', context)
 
 
+def archive(request):
+    blogs = Posts.objects.all().order_by('-timestamp')
+    context = {
+        'blogs': blogs,
+    }
+    return render(request, 'archive.html', context)
+
+
 def about(request):
     return render(request,'About.html')
 

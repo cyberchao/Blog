@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import post, blog, search, get_category_blogs, get_tag_blogs, about, license
+from .views import post, blog, search, get_category_blogs, get_tag_blogs, about, license, archive
 from .register import loginde, logoutde, active, profile, change_profile, signup
 
 urlpatterns = [
     path('', post, name='post_list'),
     path('blog/<id>/', blog, name='blog_detail'),
+    path('archive', archive, name='archive'),
     path('category/<id>/', get_category_blogs, name='get_category_blogs'),
     path('tag/<id>/', get_tag_blogs, name='get_tag_blogs'),
     path('search/', search, name='search'),

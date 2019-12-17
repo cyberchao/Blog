@@ -1,0 +1,55 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'vendor/layui/css/layui.css' %}">
+    </head>
+    <body>
+
+        <div class="contentr" style="    background-image: url({% static 'img/archive1.jpg' %});background-size: contain;">
+            <div class="layui-container">
+                <div class="layui-row" style="background: aliceblue;">
+                    <div class="layui-col-xs12">
+                        <hr class="layui-bg-red">
+                        <ul class="layui-timeline" style="padding-left: 12%;">
+                         {% regroup blogs by timestamp.year as blog_group  %}
+                         {% for year in blog_group %}
+                            <li class="layui-timeline-item">
+                             <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                             <div class="layui-timeline-content layui-text year-ul-list">
+                                 <h3 class="layui-timeline-title">{{ year.grouper }}年</h3>
+                                 <ul class="layui-timeline">
+                                     {% regroup year.list by timestamp.month as month_blog_group %}
+                                     {% for month in month_blog_group %}
+                                        <li class="layui-timeline-item">
+                                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                        <div class="layui-timeline-content layui-text">
+                                            <h3 class="layui-timeline-title">{{ month.grouper }}月</h3>
+                                            <ul>
+                                                {% for blog in month.list%}
+                                                    <li>
+                                                        <a href="#" target="_blank">
+                                                            {{ blog.timestamp|date:'m-d' }} -- {{ blog.title }}</a>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        </li>
+                                     {% endfor %}
+                                 </ul>
+                             </div>
+                            </li>
+                         {% endfor %}
+                        </ul>
+
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+    </body>
+</html>
