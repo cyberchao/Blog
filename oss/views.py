@@ -15,9 +15,9 @@ access_key_id = 'LTAI5AYKfHBArSBR'
 # 请填写您的AccessKeySecret。
 access_key_secret = 'zxUBEOnfPCP2NPrBVD5TdhwNROcZ9m'
 # host的格式为 bucketname.endpoint ，请替换为您的真实信息。
-host = 'http://pandacoderblog.oss-cn-shanghai.aliyuncs.com'
+host = 'https://pandacoderblog.oss-cn-shanghai.aliyuncs.com'
 # callback_url为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-callback_url = "http://pandacoder.top/oss/"
+callback_url = "https://ksprd.top/oss/"
 # 用户上传文件时指定的前缀。
 upload_dir = 'music/'
 expire_time = 30

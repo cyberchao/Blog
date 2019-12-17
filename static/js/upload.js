@@ -27,7 +27,7 @@ function send_request()
     if (xmlhttp!=null)
     {
         // serverUrl是 用户获取 '签名和Policy' 等信息的应用服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-        serverUrl = 'http://pandacoder.top/oss/'
+        serverUrl = 'https://ksprd.top/oss/'
 
         xmlhttp.open( "GET", serverUrl, false );
         xmlhttp.send(null);
@@ -136,7 +136,7 @@ function set_upload_param(up, filename, ret)
         'policy': policyBase64,
         'OSSAccessKeyId': accessid,
         'success_action_status' : '200', //让服务端返回200,不然，默认会返回204
-        'callback' : window.btoa('{"callbackUrl": "http://pandacoder.top/oss/", "callbackBody": "filename=${object}&albumid='+albumid+'&ytb='+ytburl+'", "callbackBodyType": "application/x-www-form-urlencoded"}'),
+        'callback' : window.btoa('{"callbackUrl": "https://ksprd.top/oss/", "callbackBody": "filename=${object}&albumid='+albumid+'&ytb='+ytburl+'", "callbackBodyType": "application/x-www-form-urlencoded"}'),
         // 'callback':window.btoa(JSON.stringify(myvar)),
         'signature': signature,
     };
