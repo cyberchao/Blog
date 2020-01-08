@@ -82,7 +82,26 @@
 
         {% include 'aside.html' with recent=recent category_count=category_count  %}
       </div>
-      <ul class="pagination">
+
+<!--        <div class="pagination p1">-->
+<!--            <ul>-->
+<!--                {% if all.has_previous %}-->
+<!--                <li>-->
+<!--                  <a href="?page={{ all.previous_page_number }}" tabindex="-1">Previous</a>-->
+<!--                </li>-->
+<!--                {% endif %}-->
+<!--                {% for pg in pagerange %}-->
+<!--                    {% paginate current_page pg pagenum %}-->
+<!--                {% endfor %}-->
+<!--                {% if all.has_next %}-->
+<!--                <li>-->
+<!--                  <a href="?page={{ all.next_page_number }}">Next</a>-->
+<!--                </li>-->
+<!--                {% endif %}-->
+<!--            </ul>-->
+<!--         </div>-->
+
+      <ul class="pagination p1">
         {% if all.has_previous %}
         <li class="page-item">
           <a class="page-link" href="?page={{ all.previous_page_number }}" tabindex="-1">Previous</a>

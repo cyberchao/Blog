@@ -6,10 +6,10 @@ register = template.Library()
 
 def formathtml(current, page):
     if current==page:
-        source = '<li class="page-item"><a href="?page={0}" class="page-link active">{0}</a></li>'.format(str(current))
+        source = '<li><a href="?page={0}" class="is-active">{0}</a></li>'.format(str(current))
         return source
     else    :
-        source = '<li class="page-item"><a href="?page={0}" class="page-link">{0}</a></li>'.format(str(page))
+        source = '<li><a href="?page={0}">{0}</a></li>'.format(str(page))
         return source
 
 @register.simple_tag

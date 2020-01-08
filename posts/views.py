@@ -8,7 +8,7 @@ from comment.views import talk
 from comment.models import Genre
 
 def post(request):
-    blogs = Posts.objects.order_by('-timestamp')
+    blogs = Posts.objects.filter(author=3).order_by('-timestamp')
     # 一个分页器实例，第一个参数是要被分页的所有对象，第二个参数是每页对象的个数
     paginator = Paginator(blogs, 8)
     # 获取请求的url中page的值,str类型

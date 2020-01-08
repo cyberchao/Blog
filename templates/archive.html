@@ -32,7 +32,7 @@
                                             <ul>
                                                 {% for blog in month.list%}
                                                     <li>
-                                                        <a href="#" target="_blank">
+                                                        <a href="{{ blog.get_absolutly_url }}" target="_blank">
                                                             {{ blog.timestamp|date:'m-d' }} -- {{ blog.title }}</a>
                                                     </li>
                                                 {% endfor %}
