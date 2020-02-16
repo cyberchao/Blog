@@ -4,7 +4,7 @@
 
 #### 主页：
 
-![123](https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20200216151113.png)
+![](https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20200216151113.png)
 
 #### 功能：
 
@@ -42,7 +42,7 @@
 
    ![](https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20200216150352.png)
 
-   10.离线下载和私人云盘是github上另外两个独立的工具，这里只是入口方便使用。
+10.离线下载和私人云盘,这两个是github上另外两个独立的工具，这里只是入口方便使用
 
    ![](https://pandacoderblog.oss-cn-shanghai.aliyuncs.com/倾听/20200216150540.png)
 
