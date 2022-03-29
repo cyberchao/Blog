@@ -28,7 +28,7 @@ jsmin==2.2.2
 macholib==1.11     
 mutagen==1.42.0   
 oss2==2.8.0    
-paramiko==2.6.0    
+paramiko==2.10.1    
 parso==0.5.1    
 Pillow==5.4.1    
 pip==18.1     
